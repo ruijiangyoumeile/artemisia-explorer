@@ -1,13 +1,19 @@
 # 艾草 · 形与香
 
-使用用户提供的 GLB 模型制作的 Three.js 交互科普网页。进入 dist 后用静态 HTTP 服务预览；不能直接双击 HTML 加载模型。
+公开体验：https://ruijiangyoumeile.github.io/artemisia-explorer/
 
-支持七个滚动章节、部位标记、平滑镜头聚焦、自由旋转缩放、自动旋转与复位、参考资料弹窗、移动布局与减少动态效果偏好。
+使用 Three.js 的三维科普页面，支持整体、叶片、叶背、茎和根的镜头聚焦，以及香气、文化资料。
 
-模型只有一个网格，此版本保留真实几何，仅通过镜头聚焦观察部位，没有将空间切片误标为真实解剖分件。显微结构和化学含量不由模型推断。
+## 发布与更新
 
-内容来源在网页每段与“资料与来源”中可查。以 Artemisia argyi 为科普对象，但所给模型未经物种鉴定。引用的精油成分数据属于叶部研究。
+GitHub Pages 从 main 分支根目录发布。后续版本直接更新本仓库，网站地址保持不变。发布新版时更新 index.html 中 app.js/style.css 的版本参数，以及 app.js 中模型 URL 的版本参数，避免浏览器沿用旧资源。等待 Pages 部署成功后再验收；CDN 缓存传播可能存在短暂延迟。
 
-交互思路参考 nytimes/three-story-controls 与 donmccurdy/three-gltf-viewer，没有复制项目代码。Three.js 0.180.0 采用 MIT 许可，许可证在 dist/vendor/THREE-LICENSE.txt。模型由用户提供。
-为满足托管单文件限制，GLB 转换为外部资源 glTF；几何不变。基础颜色 PNG 转换为 JPEG 98，法线与金属/粗糙度 PNG 保留。
-加载优化：使用 Draco 几何压缩与 WebP 纹理。模型由 36,516,599 字节减至 3,205,900 字节（约减少 91.2%）；保留原有三角面数量。法线与材质图缩至 1024、基础颜色缩至 2048，因此纹理近看清晰度可能略降低。
+## 模型优化
+
+采用 Draco 几何压缩与 WebP 纹理，模型资源从约 36.5 MB 降为 3.2 MB，减少约 91%；保留原有三角面。法线与材质图为 1024，颜色图为 2048。模型没有独立分件，当前版本采用镜头聚焦。
+
+## 知识与许可
+
+以 Artemisia argyi 为科普对象，但所给模型尚未经物种鉴定。形态、器官功能、叶精油和文化资料均在页面中列出来源。叶部研究不套用到茎或根，传统用途不等同于临床疗效。
+
+模型由用户提供。Three.js 使用 MIT 许可，见 THREE-LICENSE.txt。交互思路参考 nytimes/three-story-controls 与 donmccurdy/three-gltf-viewer，未复制参考项目代码。
